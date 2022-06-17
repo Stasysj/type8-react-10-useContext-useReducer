@@ -9,8 +9,8 @@ function Card(props) {
   return (
     <div className={css.card}>
       {props.children}
-      <h3>The name in context value is: {ctx.userName}</h3>
-      <button>Logout</button>
+      <h3>The name in context value is: {ctx.currentUser}</h3>
+      <button onClick={ctx.logout}>Logout</button>
     </div>
   );
 }

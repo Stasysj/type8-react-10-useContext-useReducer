@@ -3,13 +3,17 @@ import { useContext } from 'react';
 import AuthContext from './../../store/authContext';
 
 function Navigation() {
-  const { isLoggedIn } = useContext(AuthContext);
+  const { isLoggedIn, logout } = useContext(AuthContext);
 
   return (
     <nav className={css.nav}>
       <a href='#'>Home</a>
       {!isLoggedIn && <a href='#'>Login</a>}
-      {isLoggedIn && <a href='#'>Logout</a>}
+      {isLoggedIn && (
+        <a role='button' onClick={logout} href='#'>
+          Logout
+        </a>
+      )}
     </nav>
   );
 }

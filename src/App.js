@@ -14,14 +14,19 @@ function App() {
   // priklausomai ar trua ar false rodom login arba logout
   // jei submitinam forma tai pakeisti isLoggedIn state i true
 
-  function login() {
+  function login(loginName) {
     // ar sutampa email ir password
+    setCurrentUser(loginName);
     setIsLoggedIn(true);
+  }
+  function logout() {
+    setIsLoggedIn(false);
   }
 
   const ctx = {
-    userName: 'James Smith',
+    currentUser,
     login,
+    logout,
     isLoggedIn,
   };
 
