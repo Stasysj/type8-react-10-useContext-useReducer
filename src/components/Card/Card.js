@@ -4,7 +4,7 @@ import AuthContext from './../../store/authContext';
 
 function Card(props) {
   const ctx = useContext(AuthContext);
-  console.log('ctx ===', ctx);
+  // console.log('ctx ===', ctx);
 
   return (
     <div className={css.card}>
