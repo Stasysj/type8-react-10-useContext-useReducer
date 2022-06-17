@@ -1,5 +1,6 @@
 import css from './Counter.module.css';
 import { useState } from 'react';
+import Card from '../Card/Card';
 
 function Counter() {
   const [value, setValue] = useState(0);
@@ -12,6 +13,7 @@ function Counter() {
     <div>
       <h2 className={css.count}>{value}</h2>
       <button onClick={handleInc}>Increase</button>
+      <Card />
     </div>
   );
 }
