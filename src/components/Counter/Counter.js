@@ -8,11 +8,18 @@ function counterReducer(state, action) {
   console.log('state ===', state);
   console.log('action ===', action);
 
-  if (action === '-') {
-    return { count: state.count - 1 };
+  switch (action.type) {
+    case 'INCR':
+      return { count: state.count + 1 };
+    case 'UPBY':
+      return { count: state.count + action.payload };
+    case 'DECR':
+      return { count: state.count - 1 };
+    case 'DOWN5':
+      return { count: state.count - 5 };
+    default:
+      throw new Error('neatpazintas type');
   }
-
-  return { count: state.count + 1 };
 }
 // state.count++ === state.count = state.count + 1
 function Counter() {
@@ -22,18 +29,22 @@ function Counter() {
 
   function handleInc() {
     // setValue((prevValue) => prevValue + 1);
-    dispatch('+');
+    dispatch({ type: 'INCR' });
   }
   function handleDec() {
     // setValue((prevValue) => prevValue - 1);
-    dispatch('-');
+    dispatch({ type: 'DECR' });
   }
+
+  // TODO: padaryti reset
 
   return (
     <div>
       <h2 className={css.count}>{state.count}</h2>
+      <button onClick={() => dispatch({ type: 'UPBY', payload: 7 })}>Up by 7</button>
       <button onClick={handleInc}>Increase</button>
       <button onClick={handleDec}>Down</button>
+      <button onClick={() => dispatch({ type: 'DOWN5' })}>down 5</button>
       <Card />
     </div>
   );
