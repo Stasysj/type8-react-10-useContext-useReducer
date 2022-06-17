@@ -6,10 +6,11 @@ import { createContext } from 'react';
 // argumentai tik autocompletui
 const AuthContext = createContext({
   user: '',
+  isLoggedIn: false,
   login: () => {},
-  logut: () => {},
+  logout: () => {},
 });
 
-AuthContext.displayName = 'AuthContext';
+AuthContext.displayName = 'BubbleGum';
 
 export default AuthContext;

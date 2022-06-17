@@ -1,10 +1,17 @@
 // import css from 'Login.module.css';
+import AuthContext from './../store/authContext';
+import { useContext } from 'react';
 
-function Login({}) {
+function Login() {
+  const ctx = useContext(AuthContext);
+
   function handleLogin(e) {
     e.preventDefault();
     console.log('react is in control');
+    ctx.login();
   }
+
+  if (ctx.isLoggedIn) return <h2>Prisiloginai Sveikinmai</h2>;
 
   return (
     <div>

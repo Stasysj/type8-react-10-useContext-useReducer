@@ -1,11 +1,15 @@
 import css from './Navigation.module.css';
+import { useContext } from 'react';
+import AuthContext from './../../store/authContext';
 
 function Navigation() {
+  const { isLoggedIn } = useContext(AuthContext);
+
   return (
     <nav className={css.nav}>
       <a href='#'>Home</a>
-      <a href='#'>Login</a>
-      <a href='#'>Logout</a>
+      {!isLoggedIn && <a href='#'>Login</a>}
+      {isLoggedIn && <a href='#'>Logout</a>}
     </nav>
   );
 }
