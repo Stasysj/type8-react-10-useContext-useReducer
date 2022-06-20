@@ -17,6 +17,8 @@ function counterReducer(state, action) {
       return { count: state.count - 1 };
     case 'DOWN5':
       return { count: state.count - 5 };
+    case 'reset':
+      return initCounterValue;
     default:
       throw new Error('neatpazintas type');
   }
@@ -45,6 +47,7 @@ function Counter() {
       <button onClick={handleInc}>Increase</button>
       <button onClick={handleDec}>Down</button>
       <button onClick={() => dispatch({ type: 'DOWN5' })}>down 5</button>
+      <button onClick={() => dispatch({ type: 'reset' })}>RESET</button>
       <Card />
     </div>
   );
