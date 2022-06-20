@@ -17,9 +17,9 @@ function counterReducer(state, action) {
 
   switch (action.type) {
     case ACTIONs.INCR:
-      if (state.count === 4) {
+      if (state.count === 7) {
         const stateCopy = { ...state };
-        stateCopy.error = 'Negalima reiksme didesne uz 5';
+        stateCopy.error = 'Negalima reiksme didesne uz 7';
         return stateCopy;
       }
       return { count: state.count + 1 };
@@ -63,7 +63,7 @@ function Counter() {
       {state.error && <h3>{state.error}</h3>}
 
       {/* <button onClick={() => dispatch({ type: 'UPBY', payload: 7 })}>Up by 7</button> */}
-      {state.count < 5 && <button onClick={handleInc}>Increase</button>}
+      {state.count < 7 && <button onClick={handleInc}>Increase</button>}
       {/* <button onClick={handleInc}>Increase</button> */}
       <button onClick={handleDec}>Down</button>
       {/* <button onClick={() => dispatch({ type: 'DOWN5' })}>down 5</button>
