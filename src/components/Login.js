@@ -12,9 +12,16 @@ const initValues = {
 function loginReducerFn(state, action) {
   switch (action.type) {
     case 'password':
+      if (state.username.length === 0)
+        return { ...state, password: action.payload, usernameErr: 'Iveskite userName' };
       return { ...state, password: action.payload };
     case 'username':
-      return { ...state, username: action.payload };
+      return { ...state, username: action.payload, usernameErr: '' };
+    case 'usernameBlur':
+      if (state.username.length === 0) {
+        return { ...state, usernameErr: 'Iveskite userName' };
+      }
+      return state;
 
     default:
       throw new Error('klaida');
@@ -42,8 +49,11 @@ function Login() {
     <div>
       <h2>Login</h2>
       <form onSubmit={handleLogin}>
+        {state.usernameErr && <h3>{state.usernameErr}</h3>}
+
         <input
           onChange={(e) => dispatch({ type: 'username', payload: e.target.value })}
+          onBlur={(e) => dispatch({ type: 'usernameBlur' })}
           ref={userNameRef}
           type='text'
           placeholder='username'
