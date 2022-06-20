@@ -6,6 +6,7 @@ import { useReducer } from 'react';
 const initValues = {
   username: '',
   password: '',
+  password1: '',
   usernameErr: '',
   passwordErr: '',
 };
@@ -22,6 +23,10 @@ function loginReducerFn(state, action) {
         return { ...state, usernameErr: 'Iveskite userName' };
       }
       return state;
+    case 'input':
+      console.log(action.payload.name);
+      console.log(action.payload.value);
+      return { ...state, [action.payload.name]: action.payload.value };
 
     default:
       throw new Error('klaida');
@@ -64,6 +69,14 @@ function Login() {
           type='password'
           placeholder='password'
           value={state.password}
+          name='password'
+        />
+        <input
+          onChange={(e) => dispatch({ type: 'input', payload: e.target })}
+          type='password'
+          placeholder='password'
+          value={state.password1}
+          name='password1'
         />
         <button type='submit'>Send</button>
       </form>
